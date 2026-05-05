@@ -1,0 +1,22 @@
+name: Test Self-Hosted Runner
+
+on:
+  workflow_dispatch:  # 允许手动触发
+
+jobs:
+  test:
+    runs-on: self-hosted  # 使用你的自托管运行器
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Show system info
+        run: |
+          echo "=== Runner Information ==="
+          echo "Hostname: $(hostname)"
+          echo "User: $(whoami)"
+          echo "OS: $(uname -a)"
+          echo "Working dir: $(pwd)"
+          echo "Time: $(date)"
+          echo "=== Test Successful! ==="
